@@ -18,28 +18,9 @@ const  db = require('knex')({
 app.use(bodyParser.json())
 app.use(cors())
 
-const database={
-    users:[
-        {
-                id:'123',
-                name:'karem',
-                email:'karem.phones2018@gmail.com',
-                password:'karemali123',
-                entries:0,
-                joined: new Date()
-        },
-        {
-            id:'1212',
-            name:'ahmed',
-            email:'ahmed.phones2018@gmail.com',
-            password:'ahmed123',
-            entries:0,
-            joined: new Date()
-        }
-    ]
-}
+
 app.get('/',(req,res)=>{
-    res.send(database.users)
+    res.send('it is working')
 })
 app.get('/profile/:id',(req,res)=>{
     const {id}=req.params
