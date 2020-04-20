@@ -6,6 +6,7 @@ const cors=require('cors')
 const signin=require('./controllers/signin')
 const register=require('./controllers/register')
 const image=require('./controllers/load')
+const PORT = process.env.PORT || 3001;
 const  db = require('knex')({
     client: 'pg',
     connection: {
@@ -37,6 +38,6 @@ app.get('/profile/:id',(req,res)=>{
 app.put('/image',(req,res)=>{image.updateentries(req,res,db)})
 app.post('/signin',(req,res)=>{signin.handlesignin(req,res,db,bcrypt)})
 app.post('/register',(req,res)=>{register.handleregister(req,res,db,bcrypt)})
-app.listen(process.env.PORT || 3001,()=>{
-    console.log(`app is running ON PORT ${process.env.PORT}`)
+app.listen(PORT,()=>{
+    console.log(`app is running ON PORT ${PORT}`)
 })
