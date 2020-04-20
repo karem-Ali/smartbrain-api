@@ -1,16 +1,20 @@
 const express=require('express')
 const app=express()
+if (process.env.NODE_ENV !== 'production') {
+    require('dotenv').load();
+  }
+  
 const bodyParser=require('body-parser')
 const bcrypt=require('bcrypt-nodejs')
 const cors=require('cors')
 const signin=require('./controllers/signin')
 const register=require('./controllers/register')
 const image=require('./controllers/load')
-const PORT = process.env.PORT || 3001;
+const PORT = process.env.PORT ;
 const  db = require('knex')({
     client: 'pg',
     connection: {
-      host : '127.0.0.1',
+      host : 'https://immense-island-60452.herokuapp.com/',
       user : 'postgres',
       password : 'kareem',
       database : 'smartbrain'
